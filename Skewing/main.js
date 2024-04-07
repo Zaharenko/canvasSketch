@@ -63,7 +63,7 @@ const sketch = ({ context, width, height }) => {
             const { x, y } = rect;
 
             rect.x = x + Math.sin(animationStep * 0.05) * 7;
-            rect.y = y + Math.cos(animationStep * 0.05) * 14;
+            rect.y = y + Math.cos(animationStep * 0.05) * 15;
         });
 
         draw();

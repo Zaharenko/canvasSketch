@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Canvas sketch</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                gap: 20px;
+                font-family: "Bungee Spice", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            canvas {
+                margin-bottom: 50px;
+            }
+            div {
+                text-align: center;
+                font-size: 48px;
+            }
+            .restart-page {
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                position: fixed;
+                top: 50%;
+                right: 0;
+                font-size: 48px;
+                transform: rotate(-90deg);
+            }
+        </style>
+    </head>
+    <body>
+        <p class="restart-page">
+            Refresh the page<span style="display: block">color changes</span>
+        </p>
+        <script src="bundle1.js" defer></script>
+        <script src="bundle2.js" defer></script>
+        <script>
+            setTimeout(function () {
+                const canvasElements = document.getElementsByTagName("canvas");
+                const descriptions = [
+                    "Canvas sketch Skewing",
+                    "Canvas sketch Curves",
+                    "Описание третьего холста",
+                    "Описание третьего холста",
+                ];
+
+                for (let i = 0; i < canvasElements.length; i++) {
+                    const canvas = canvasElements[i];
+
+                    const description = document.createElement("div");
+                    description.textContent = descriptions[i];
+
+                    canvas.parentNode.insertBefore(description, canvas);
+                }
+            }, 1);
+        </script>
+    </body>
+</html>
