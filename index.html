@@ -9,9 +9,20 @@
             href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap"
             rel="stylesheet"
         />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta name="author" content="" />
+        <meta
+            name="description"
+            content="Using canvas for unique content and tools for inspiration and entertainment"
+        />
+        <meta
+            property="og:description"
+            content="Using canvas for unique content and tools for inspiration and entertainment"
+        />
+        <meta
+            name="twitter:description"
+            content="Using canvas for unique content and tools for inspiration and entertainment"
+        />
+        <meta property="og:image" content="screenshot/1+2.jpeg" />
+        <meta name="author" content="Anton Zakharenka" />
         <style>
             body {
                 display: flex;
@@ -52,14 +63,16 @@
         </p>
         <script src="bundle1.js" defer></script>
         <script src="bundle2.js" defer></script>
+        <script src="bundle3.js" defer></script>
+        <script src="bundle4.js" defer></script>
         <script>
             setTimeout(function () {
                 const canvasElements = document.getElementsByTagName("canvas");
                 const descriptions = [
                     "Canvas sketch Skewing",
                     "Canvas sketch Curves",
-                    "Описание третьего холста",
-                    "Описание третьего холста",
+                    "Canvas sketch Audio",
+                    "Canvas sketch Particles",
                 ];
 
                 for (let i = 0; i < canvasElements.length; i++) {
