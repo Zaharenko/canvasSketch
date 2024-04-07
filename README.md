@@ -18,6 +18,22 @@ Pizza Box Redux reimagines pizza boxes as dynamic and vibrant art pieces, settin
 
 -   **Interactive Experience**: Enjoy an interactive experience as the canvas sketch reacts to mouse movements, providing an engaging and immersive journey.
 
+## Project 2: Canvas Sketch Lithuania
+
+This project is a dynamic canvas sketch inspired by the colors of the Lithuanian flag. It utilizes random noise and mathematical functions to create an abstract and vibrant artwork.
+
+### Description
+
+Canvas Sketch Lithuania is an interactive digital art piece that explores the visual aesthetics of the Lithuanian flag. It dynamically generates a colorful composition using various shades of yellow, green, and red, reminiscent of the Lithuanian national colors. The canvas sketch reacts to mouse movements, creating an engaging and immersive experience for viewers.
+
+### Features
+
+**Dynamic Color Palette**: The artwork features vibrant colors inspired by the Lithuanian flag, adding visual interest and depth to the composition.
+
+**Interactive Experience**: Users can interact with the canvas sketch by moving their mouse, influencing the patterns and shapes created on the canvas in real-time.
+
+**Randomized Patterns**: The canvas sketch utilizes random noise and mathematical functions to generate unique and unpredictable patterns, ensuring each viewing experience is different.
+
 ### How to Run
 
 To run the Pizza Box Redux project:
