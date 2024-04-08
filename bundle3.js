@@ -15,7 +15,7 @@ let manager;
 let minDb, maxDb;
 
 const backgroundImage = new Image();
-backgroundImage.src = "https://zaharenko.github.io/canvasSketch/Audio/song/poster.jpg";
+backgroundImage.src = "./Audio/song/poster.jpg";
 
 const sketch = () => {
     const numCircles = 5;
