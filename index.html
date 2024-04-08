@@ -61,17 +61,13 @@
         <p class="restart-page">
             Refresh the page<span style="display: block">color changes</span>
         </p>
-        <script src="bundle1.js" defer></script>
-        <script src="bundle2.js" defer></script>
-        <script src="bundle3.js" defer></script>
-        <script src="bundle4.js" defer></script>
         <script>
             setTimeout(function () {
                 const canvasElements = document.getElementsByTagName("canvas");
                 const descriptions = [
                     "Canvas sketch Skewing",
                     "Canvas sketch Curves",
-                    "Canvas sketch Audio",
+                    "Canvas sketch Audio click on the sketch",
                     "Canvas sketch Particles",
                 ];
 
@@ -83,7 +79,11 @@
 
                     canvas.parentNode.insertBefore(description, canvas);
                 }
-            }, 1);
+            }, 1000);
         </script>
+        <script src="bundle1.js"></script>
+        <script src="bundle2.js"></script>
+        <script src="bundle3.js"></script>
+        <script src="bundle4.js"></script>
     </body>
 </html>

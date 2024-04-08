@@ -134,7 +134,8 @@ const addListeners = () => {
 
 const createAudio = () => {
     audio = document.createElement("audio");
-    audio.src = "song/Deja-Vu.mp3";
+    audio.src =
+        "https://zaharenko.github.io/canvasSketch/Audio/song/Deja-Vu.mp3";
 
     audioContext = new AudioContext();
 
