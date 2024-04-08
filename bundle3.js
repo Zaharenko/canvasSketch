@@ -15,7 +15,7 @@ let manager;
 let minDb, maxDb;
 
 const backgroundImage = new Image();
-backgroundImage.src = "song/poster.jpg";
+backgroundImage.src = "https://github.com/Zaharenko/canvasSketch/blob/main/Audio/song/poster.jpg";
 
 const sketch = () => {
     const numCircles = 5;
@@ -1042,28 +1042,28 @@ module.exports = createRandom();
 	      var token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZWN]|"[^"]*"|'[^']*'/g;
 	      var timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g;
 	      var timezoneClip = /[^-+\dA-Z]/g;
-	  
+
 	      // Regexes and supporting functions are cached through closure
 	      return function (date, mask, utc, gmt) {
-	  
+
 	        // You can't provide utc if you skip other args (use the 'UTC:' mask prefix)
 	        if (arguments.length === 1 && kindOf(date) === 'string' && !/\d/.test(date)) {
 	          mask = date;
 	          date = undefined;
 	        }
-	  
+
 	        date = date || new Date;
-	  
+
 	        if(!(date instanceof Date)) {
 	          date = new Date(date);
 	        }
-	  
+
 	        if (isNaN(date)) {
 	          throw TypeError('Invalid date');
 	        }
-	  
+
 	        mask = String(dateFormat.masks[mask] || mask || dateFormat.masks['default']);
-	  
+
 	        // Allow setting the utc/gmt argument via the mask
 	        var maskSlice = mask.slice(0, 4);
 	        if (maskSlice === 'UTC:' || maskSlice === 'GMT:') {
@@ -1073,7 +1073,7 @@ module.exports = createRandom();
 	            gmt = true;
 	          }
 	        }
-	  
+
 	        var _ = utc ? 'getUTC' : 'get';
 	        var d = date[_ + 'Date']();
 	        var D = date[_ + 'Day']();
@@ -1117,7 +1117,7 @@ module.exports = createRandom();
 	          W:    W,
 	          N:    N
 	        };
-	  
+
 	        return mask.replace(token, function (match) {
 	          if (match in flags) {
 	            return flags[match];
@@ -1200,7 +1200,7 @@ module.exports = createRandom();
 	/**
 	 * Get ISO-8601 numeric representation of the day of the week
 	 * 1 (for Monday) through 7 (for Sunday)
-	 * 
+	 *
 	 * @param  {Object} `date`
 	 * @return {Number}
 	 */
@@ -1384,10 +1384,10 @@ module.exports = createRandom();
 	    if ( opt === void 0 ) opt = {};
 
 	    var encoding = opt.encoding || 'image/png';
-	    if (!supportedEncodings.includes(encoding)) 
+	    if (!supportedEncodings.includes(encoding))
 	        { throw new Error(("Invalid canvas encoding " + encoding)); }
 	    var extension = (encoding.split('/')[1] || '').replace(/jpeg/i, 'jpg');
-	    if (extension) 
+	    if (extension)
 	        { extension = ("." + extension).toLowerCase(); }
 	    return {
 	        extension: extension,
@@ -1449,7 +1449,7 @@ module.exports = createRandom();
 	                link.onclick = noop;
 	                setTimeout(function () {
 	                    window.URL.revokeObjectURL(blob);
-	                    if (link.parentElement) 
+	                    if (link.parentElement)
 	                        { link.parentElement.removeChild(link); }
 	                    link.removeAttribute('href');
 	                    resolve({
@@ -1489,7 +1489,7 @@ module.exports = createRandom();
 	    }
 	    var frame = null;
 	    var extension = '';
-	    if (typeof opt.extension === 'string') 
+	    if (typeof opt.extension === 'string')
 	        { extension = opt.extension; }
 	    if (typeof opt.frame === 'number') {
 	        var totalFrames;
@@ -1541,7 +1541,7 @@ module.exports = createRandom();
 	    if ( opt === void 0 ) opt = {};
 
 	    var handler = function (ev) {
-	        if (!opt.enabled()) 
+	        if (!opt.enabled())
 	            { return; }
 	        var client = getClientAPI();
 	        if (ev.keyCode === 83 && !ev.altKey && (ev.metaKey || ev.ctrlKey)) {
@@ -1738,11 +1738,11 @@ module.exports = createRandom();
 	}
 
 	function checkIfHasDimensions(settings) {
-	    if (!settings.dimensions) 
+	    if (!settings.dimensions)
 	        { return false; }
-	    if (typeof settings.dimensions === 'string') 
+	    if (typeof settings.dimensions === 'string')
 	        { return true; }
-	    if (Array.isArray(settings.dimensions) && settings.dimensions.length >= 2) 
+	    if (Array.isArray(settings.dimensions) && settings.dimensions.length >= 2)
 	        { return true; }
 	    return false;
 	}
@@ -1772,7 +1772,7 @@ module.exports = createRandom();
 	    var exporting = props.exporting;
 	    var scaleToFit = hasDimensions ? settings.scaleToFit !== false : false;
 	    var scaleToView = !exporting && hasDimensions ? settings.scaleToView : true;
-	    if (!browser) 
+	    if (!browser)
 	        { scaleToFit = (scaleToView = false); }
 	    var units = settings.units;
 	    var pixelsPerInch = typeof settings.pixelsPerInch === 'number' && isFinite(settings.pixelsPerInch) ? settings.pixelsPerInch : 72;
@@ -1982,16 +1982,16 @@ module.exports = createRandom();
 	                if (this$1.props.recording) {
 	                    this$1.endRecord();
 	                    this$1.run();
-	                } else 
+	                } else
 	                    { this$1.record(); }
 	            } else if (!this$1.props.recording) {
 	                this$1.exportFrame();
 	            }
 	        },
 	        togglePlay: function () {
-	            if (this$1.props.playing) 
+	            if (this$1.props.playing)
 	                { this$1.pause(); }
-	             else 
+	             else
 	                { this$1.play(); }
 	        },
 	        commit: function (ev) {
@@ -2042,7 +2042,7 @@ module.exports = createRandom();
 	    };
 	};
 	SketchManager.prototype.run = function run () {
-	    if (!this.sketch) 
+	    if (!this.sketch)
 	        { throw new Error("should wait until sketch is loaded before trying to play()"); }
 	    if (this.settings.playing !== false) {
 	        this.play();
@@ -2074,13 +2074,13 @@ module.exports = createRandom();
 	        animate = true;
 	        console.warn("[canvas-sketch] { animation } has been renamed to { animate }");
 	    }
-	    if (!animate) 
+	    if (!animate)
 	        { return; }
 	    if (!isBrowser()) {
 	        console.error("[canvas-sketch] WARN: Using { animate } in Node.js is not yet supported");
 	        return;
 	    }
-	    if (this.props.playing) 
+	    if (this.props.playing)
 	        { return; }
 	    if (!this.props.started) {
 	        this._signalBegin();
@@ -2092,15 +2092,15 @@ module.exports = createRandom();
 	    this._raf = window.requestAnimationFrame(this._animateHandler);
 	};
 	SketchManager.prototype.pause = function pause () {
-	    if (this.props.recording) 
+	    if (this.props.recording)
 	        { this.endRecord(); }
 	    this.props.playing = false;
 	    this._cancelTimeouts();
 	};
 	SketchManager.prototype.togglePlay = function togglePlay () {
-	    if (this.props.playing) 
+	    if (this.props.playing)
 	        { this.pause(); }
-	     else 
+	     else
 	        { this.play(); }
 	};
 	SketchManager.prototype.stop = function stop () {
@@ -2115,7 +2115,7 @@ module.exports = createRandom();
 	SketchManager.prototype.record = function record () {
 	        var this$1 = this;
 
-	    if (this.props.recording) 
+	    if (this.props.recording)
 	        { return; }
 	    if (!isBrowser()) {
 	        console.error("[canvas-sketch] WARN: Recording from Node.js is not yet supported");
@@ -2130,12 +2130,12 @@ module.exports = createRandom();
 	    var frameInterval = 1 / this.props.fps;
 	    this._cancelTimeouts();
 	    var tick = function () {
-	        if (!this$1.props.recording) 
+	        if (!this$1.props.recording)
 	            { return Promise.resolve(); }
 	        this$1.props.deltaTime = frameInterval;
 	        this$1.tick();
 	        return this$1.exportFrame(exportOpts).then(function () {
-	            if (!this$1.props.recording) 
+	            if (!this$1.props.recording)
 	                { return; }
 	            this$1.props.deltaTime = 0;
 	            this$1.props.frame++;
@@ -2217,7 +2217,7 @@ module.exports = createRandom();
 	        var this$1 = this;
 	        if ( opt === void 0 ) opt = {};
 
-	    if (!this.sketch) 
+	    if (!this.sketch)
 	        { return Promise.all([]); }
 	    if (typeof this.sketch.preExport === "function") {
 	        this.sketch.preExport();
@@ -2228,17 +2228,17 @@ module.exports = createRandom();
 	    if (client && opt.commit && typeof client.commit === "function") {
 	        var commitOpts = objectAssign({}, exportOpts);
 	        var hash = client.commit(commitOpts);
-	        if (isPromise_1(hash)) 
+	        if (isPromise_1(hash))
 	            { p = hash; }
-	         else 
+	         else
 	            { p = Promise.resolve(hash); }
 	    }
 	    return p.then(function (hash) { return this$1._doExportFrame(objectAssign({}, exportOpts, {
 	        hash: hash || ""
 	    })); }).then(function (result) {
-	        if (result.length === 1) 
+	        if (result.length === 1)
 	            { return result[0]; }
-	         else 
+	         else
 	            { return result; }
 	    });
 	};
@@ -2299,7 +2299,7 @@ module.exports = createRandom();
 	        delete curOpt.encoding;
 	        delete curOpt.encodingQuality;
 	        for (var k in curOpt) {
-	            if (typeof curOpt[k] === "undefined") 
+	            if (typeof curOpt[k] === "undefined")
 	                { delete curOpt[k]; }
 	        }
 	        var savePromise = Promise.resolve({});
@@ -2320,11 +2320,11 @@ module.exports = createRandom();
 	            var isClient = savedEvents.some(function (e) { return e.client; });
 	            var isStreaming = savedEvents.some(function (e) { return e.stream; });
 	            var item;
-	            if (savedEvents.length > 1) 
+	            if (savedEvents.length > 1)
 	                { item = savedEvents.length; }
-	             else if (eventWithOutput) 
+	             else if (eventWithOutput)
 	                { item = (eventWithOutput.outputName) + "/" + (savedEvents[0].filename); }
-	             else 
+	             else
 	                { item = "" + (savedEvents[0].filename); }
 	            var ofSeq = "";
 	            if (exportOpts.sequence) {
@@ -2385,7 +2385,7 @@ module.exports = createRandom();
 	    }
 	};
 	SketchManager.prototype.submitDrawCall = function submitDrawCall () {
-	    if (!this.sketch) 
+	    if (!this.sketch)
 	        { return; }
 	    var props = this.props;
 	    this._preRender();
@@ -2417,19 +2417,19 @@ module.exports = createRandom();
 	        }
 	    }
 	    var timeOpts = Object.assign({}, this._settings, opt);
-	    if ("time" in opt && "frame" in opt) 
+	    if ("time" in opt && "frame" in opt)
 	        { throw new Error("You should specify { time } or { frame } but not both"); }
-	     else if ("time" in opt) 
+	     else if ("time" in opt)
 	        { delete timeOpts.frame; }
-	     else if ("frame" in opt) 
+	     else if ("frame" in opt)
 	        { delete timeOpts.time; }
-	    if ("duration" in opt && "totalFrames" in opt) 
+	    if ("duration" in opt && "totalFrames" in opt)
 	        { throw new Error("You should specify { duration } or { totalFrames } but not both"); }
-	     else if ("duration" in opt) 
+	     else if ("duration" in opt)
 	        { delete timeOpts.totalFrames; }
-	     else if ("totalFrames" in opt) 
+	     else if ("totalFrames" in opt)
 	        { delete timeOpts.duration; }
-	    if ("data" in opt) 
+	    if ("data" in opt)
 	        { this._props.data = opt.data; }
 	    var timeProps = this.getTimeProps(timeOpts);
 	    Object.assign(this._props, timeProps);
@@ -2445,15 +2445,15 @@ module.exports = createRandom();
 	    if (opt.p5 && typeof opt.p5 !== "function") {
 	        this.props.p5 = opt.p5;
 	        this.props.p5.draw = (function () {
-	            if (this$1._isP5Resizing) 
+	            if (this$1._isP5Resizing)
 	                { return; }
 	            this$1._lastRedrawResult = this$1.submitDrawCall();
 	        });
 	    }
 	    if ("playing" in opt) {
-	        if (opt.playing) 
+	        if (opt.playing)
 	            { this.play(); }
-	         else 
+	         else
 	            { this.pause(); }
 	    }
 	    checkSettings(this._settings);
@@ -2483,9 +2483,9 @@ module.exports = createRandom();
 	                this._isP5Resizing = false;
 	            }
 	        } else {
-	            if (canvas.width !== canvasWidth) 
+	            if (canvas.width !== canvasWidth)
 	                { canvas.width = canvasWidth; }
-	            if (canvas.height !== canvasHeight) 
+	            if (canvas.height !== canvasHeight)
 	                { canvas.height = canvasHeight; }
 	        }
 	        if (isBrowser() && settings.styleCanvas !== false) {
@@ -2506,7 +2506,7 @@ module.exports = createRandom();
 	    }
 	};
 	SketchManager.prototype.animate = function animate () {
-	    if (!this.props.playing) 
+	    if (!this.props.playing)
 	        { return; }
 	    if (!isBrowser()) {
 	        console.error("[canvas-sketch] WARN: Animation in Node.js is not yet supported");
@@ -2559,9 +2559,9 @@ module.exports = createRandom();
 	        this.props.playhead = this._computePlayhead(newTime, duration);
 	        var lastFrame = this.props.frame;
 	        this.props.frame = this._computeCurrentFrame();
-	        if (isLoopStart) 
+	        if (isLoopStart)
 	            { this._signalBegin(); }
-	        if (lastFrame !== this.props.frame) 
+	        if (lastFrame !== this.props.frame)
 	            { this.tick(); }
 	        this.render();
 	        this.props.deltaTime = 0;
@@ -2571,7 +2571,7 @@ module.exports = createRandom();
 	    }
 	};
 	SketchManager.prototype.dispatch = function dispatch (cb) {
-	    if (typeof cb !== "function") 
+	    if (typeof cb !== "function")
 	        { throw new Error("must pass function into dispatch()"); }
 	    cb(this.props);
 	    this.render();
@@ -2589,7 +2589,7 @@ module.exports = createRandom();
 	    }
 	};
 	SketchManager.prototype._appendCanvasIfNeeded = function _appendCanvasIfNeeded () {
-	    if (!isBrowser()) 
+	    if (!isBrowser())
 	        { return; }
 	    if (this.settings.parent !== false && this.props.canvas && !this.props.canvas.parentElement) {
 	        var defaultParent = this.settings.parent || document.body;
@@ -2656,7 +2656,7 @@ module.exports = createRandom();
 	        var this$1 = this;
 	        if ( settings === void 0 ) settings = {};
 
-	    if (this.sketch) 
+	    if (this.sketch)
 	        { throw new Error("Multiple setup() calls not yet supported."); }
 	    this._settings = Object.assign({}, settings, this._settings);
 	    checkSettings(this._settings);
@@ -2700,7 +2700,7 @@ module.exports = createRandom();
 	        var this$1 = this;
 
 	    this.pause();
-	    if (!this.sketch) 
+	    if (!this.sketch)
 	        { return; }
 	    if (typeof this.sketch.unload === "function") {
 	        this._wrapContextScale(function (props) { return this$1.sketch.unload(props); });
@@ -2737,7 +2737,7 @@ module.exports = createRandom();
 	                P5Constructor = P5Constructor.p5;
 	            }
 	            var p5Sketch = function (p5) {
-	                if (preload) 
+	                if (preload)
 	                    { p5.preload = (function () { return preload(p5); }); }
 	                p5.setup = (function () {
 	                    var props = this$1.props;
@@ -2774,7 +2774,7 @@ module.exports = createRandom();
 	        }
 	        return loader;
 	    }).then(function (sketch) {
-	        if (!sketch) 
+	        if (!sketch)
 	            { sketch = {}; }
 	        this$1._sketch = sketch;
 	        if (isBrowser()) {
@@ -2801,7 +2801,7 @@ module.exports = createRandom();
 
 	function cacheGet(id) {
 	    var client = getClientAPI();
-	    if (!client) 
+	    if (!client)
 	        { return undefined; }
 	    client[CACHE] = client[CACHE] || {};
 	    return client[CACHE][id];
@@ -2809,7 +2809,7 @@ module.exports = createRandom();
 
 	function cachePut(id, data) {
 	    var client = getClientAPI();
-	    if (!client) 
+	    if (!client)
 	        { return undefined; }
 	    client[CACHE] = client[CACHE] || {};
 	    client[CACHE][id] = data;
