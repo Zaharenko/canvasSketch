@@ -1,45 +1,171 @@
 const canvasSketch = require("canvas-sketch");
+const math = require("canvas-sketch-util/math");
+const random = require("canvas-sketch-util/random");
+const eases = require("eases");
 
 const settings = {
     dimensions: [1080, 1080],
+    animate: true,
 };
 
 let audio;
-let isPlaying = false;
+let audioContext, audioData, sourceNode, analyserNode;
+let manager;
+let minDb, maxDb;
+
+const backgroundImage = new Image();
+backgroundImage.src = "song/poster.jpg";
 
 const sketch = () => {
-    audio = document.createElement("audio");
-    audio.src = "song/Deja-Vu.mp3";
+    const numCircles = 5;
+    const numSlices = 15;
+    const slice = (Math.PI * 2) / numSlices;
+    const radius = 100;
+
+    const bins = [];
+    const lineWidths = [];
+    const circleColors = [
+        "#033540",
+        "#015366",
+        "#63898C",
+        "#A7D1D2",
+        "#E0F4F5",
+    ]; // Массив для хранения цветов каждого круга
+
+    let lineWidth, bin, mapped;
+
+    for (let i = 0; i < numCircles * numSlices; i++) {
+        bin = random.rangeFloor(4, 64);
+        if (random.value() > 0.5) bin = 0;
+        bins.push(bin);
+    }
+
+    for (let i = 0; i < numCircles; i++) {
+        const t = i / (numCircles - 1);
+        lineWidth = eases.quadIn(t) * 200 + 20;
+        lineWidths.push(lineWidth);
+    }
 
     return ({ context, width, height }) => {
-        // Clear the canvas
-        context.clearRect(0, 0, width, height);
+        // Применяем трансформацию вращения ко всему контексту
+        context.save();
+        context.translate(width * 0.5, height * 0.5);
+        context.rotate(Math.PI / 180); // Поворачиваем на 1 градус по часовой стрелке
 
-        if (!isPlaying) {
-            context.fillStyle = "white";
-            context.fillRect(0, 0, width, height);
+        // Отрисовываем фоновое изображение на всем холсте
+        context.drawImage(
+            backgroundImage,
+            -width / 2,
+            -height / 2,
+            width,
+            height,
+        );
 
-            context.fillStyle = "green";
-            context.beginPath();
-            context.moveTo(width / 2 - 30, height / 2 - 50);
-            context.lineTo(width / 2 + 30, height / 2);
-            context.lineTo(width / 2 - 30, height / 2 + 50);
-            context.fill();
+        if (!audioContext) return;
+
+        analyserNode.getFloatFrequencyData(audioData);
+
+        let cradius = radius;
+
+        for (let i = 0; i < numCircles; i++) {
+            context.save();
+
+            for (let j = 0; j < numSlices; j++) {
+                context.rotate(slice);
+                context.lineWidth = lineWidths[i];
+
+                bin = bins[i * numSlices + j];
+                if (!bin) continue;
+
+                mapped = math.mapRange(
+                    audioData[bin],
+                    minDb,
+                    maxDb,
+                    0,
+                    1,
+                    true,
+                );
+
+                lineWidth = lineWidths[i] * mapped;
+                if (lineWidth < 1) continue;
+
+                context.lineWidth = lineWidth;
+
+                // Устанавливаем цвет для текущего круга
+                context.strokeStyle = circleColors[i];
+
+                context.beginPath();
+                context.arc(0, 0, cradius + context.lineWidth * 0.5, 0, slice);
+                context.stroke();
+            }
+
+            cradius += lineWidths[i];
+
+            context.restore();
         }
+
+        context.restore();
     };
 };
 
-const addEventListener = () => {
-    window.addEventListener("mousedown", () => {
-        if (!isPlaying && audio.paused) {
+// Функция для генерации случайного цвета
+const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+};
+
+const addListeners = () => {
+    window.addEventListener("mouseup", () => {
+        if (!audioContext) createAudio();
+
+        if (audio.paused) {
             audio.play();
-            isPlaying = true;
+            manager.play();
         } else {
             audio.pause();
-            isPlaying = false;
+            manager.pause();
         }
     });
 };
 
-addEventListener();
-canvasSketch(sketch, settings);
+const createAudio = () => {
+    audio = document.createElement("audio");
+    audio.src = "song/Deja-Vu.mp3";
+
+    audioContext = new AudioContext();
+
+    sourceNode = audioContext.createMediaElementSource(audio);
+    sourceNode.connect(audioContext.destination);
+
+    analyserNode = audioContext.createAnalyser();
+    analyserNode.fftSize = 512;
+    analyserNode.smoothingTimeConstant = 0.7;
+    sourceNode.connect(analyserNode);
+
+    minDb = analyserNode.minDecibels;
+    maxDb = analyserNode.maxDecibels;
+
+    audioData = new Float32Array(analyserNode.frequencyBinCount);
+};
+
+const getAverage = (data) => {
+    let sum = 0;
+
+    for (let i = 0; i < data.length; i++) {
+        sum += data[i];
+    }
+
+    return sum / data.length;
+};
+
+const start = async () => {
+    addListeners();
+    manager = await canvasSketch(sketch, settings);
+    manager.pause();
+};
+
+start();
