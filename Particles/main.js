@@ -157,8 +157,8 @@ const loadImage = async (url) => {
 
 const start = async () => {
     // The image files are not part of the repository and have to be donwloaded separately
-    imgA = await loadImage("./Particles/images/5.png");
-    imgB = await loadImage("./Particles/images/5.png");
+    imgA = await loadImage("./Particles/images/5.PNG");
+    imgB = await loadImage("./Particles/images/5.PNG");
 
     canvasSketch(sketch, settings);
 };
