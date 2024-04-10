@@ -117,6 +117,7 @@ To run the Pizza Box Redux project:
 ### Visit the project page
 
 -   [Link](https://zaharenko.github.io/canvasSketch/index.html)
+-   [Link to course](https://github.com/brunoimbrizi/creative-coding-domestika-2022/tree/main)
 
 ### Authors
 
