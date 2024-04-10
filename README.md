@@ -101,8 +101,8 @@ To run the Pizza Box Redux project:
 4. Navigate to the project directory in your terminal.
 5. Run `canvas-sketch main.js` command.
 6. The canvas sketch will be generated and opened in your default web browser.
-7. If you need to run a project npx canvas-sketch-cli NAME FILE --open,
-   or create a new one using the command npx canvas-sketch-cli NAME FILE --open --new
+7. If you need to run a project `npx canvas-sketch-cli NAME FILE --open`,
+   or create a new one using the command `npx canvas-sketch-cli NAME FILE --open --new`
 
 ### Authors
 
