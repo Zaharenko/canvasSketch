@@ -104,6 +104,20 @@ To run the Pizza Box Redux project:
 7. If you need to run a project `npx canvas-sketch-cli NAME FILE --open`,
    or create a new one using the command `npx canvas-sketch-cli NAME FILE --open --new`
 
+### Additional Information
+
+**Project Exploration**: Dive into the world of creative coding and digital art by exploring these projects. Each project offers a unique perspective on everyday objects and visual storytelling.
+
+**Interactive Engagement**: Immerse yourself in interactive experiences where your actions directly influence the outcome. Engage with the canvas through mouse movements, clicks, or other interactive controls to create dynamic and personalized visualizations.
+
+**Creative Expression**: These projects serve as a platform for creative expression and experimentation. Feel free to modify parameters, explore different color palettes, or even create your own variations inspired by these projects.
+
+**Continuous Development**: Stay tuned for updates and new additions to the Everyday Objects Series. The creative journey never ends, and there's always something new to explore and create.
+
+### Visit the project page
+
+-   [Link](https://zaharenko.github.io/canvasSketch/index.html)
+
 ### Authors
 
--   Anton Zakharenka
+-   [Anton Zakharenka](https://github.com/Zaharenko)
